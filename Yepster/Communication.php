@@ -15,7 +15,7 @@ abstract class Communication extends Curl
      *  Constants
      */
 
-    const  YEPSTER_BASE_URL = "https://yepster.com/api/";
+    const  YEPSTER_BASE_URL = "https://www.yepster.com/api/";
 
     // const YEPSTER_ACTION must be defined!
 

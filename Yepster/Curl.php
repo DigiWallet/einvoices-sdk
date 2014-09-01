@@ -52,7 +52,7 @@ class Curl
 		curl_setopt($this->handle, CURLOPT_POSTFIELDS, $fields);
 		$result = curl_exec($this->handle);
 
-		if ($result === false) throw new Exception(curl_error());
+		if ($result === false) throw new Exception(curl_error($this->handle));
 		curl_close($this->handle);
 		return $result;
 	}
