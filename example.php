@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Yepster SDK example
+ * eInvoices SDK example
  */
 
-// require_once 'Yepster/autoload.php'; // Uncomment if autoloading doesn't work
+// require_once 'eInvoices/autoload.php'; // Uncomment if autoloading doesn't work
 
-$invoice = Yepster\CreateInvoice::model()
+$invoice = eInvoices\CreateInvoice::model()
      ->setApiKey ('6ba19adb0af1c3ec31220072d73080df04b1ef271ac031ca508ef045bccec357')
      ->addDetail ('name', 'Yellow Melon B.V.')
      ->addDetail ('street', 'Kleine koppel')
@@ -25,10 +25,10 @@ try {
 	$result = $invoice->exec();
 } 
 catch (Exception $e) {
-	if ($e instanceof Yepster\Exception) echo "Yepster returned an error: ".$e->getMessage();
+	if ($e instanceof eInvoices\Exception) echo "eInvoices returned an error: ".$e->getMessage();
 }
 
 if ($result['status'] == 'success') 
-	echo 'Yepster created the invoice: #' . $result['externalid']; else
+	echo 'eInvoices created the invoice: #' . $result['externalid']; else
 	echo 'Could not create invoice: ' . $result['error'];
 
