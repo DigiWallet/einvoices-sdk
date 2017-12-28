@@ -1,42 +1,43 @@
 <?php
-namespace Yepster;
+
+namespace eInvoices;
 
 /**
  * Curl helper
  *
- * @author  Yellow Melon B.V.
+ * @author DigiWallet B.V.
  * @license BSD License
- * @version 1.0
+ * @package eInvoices API
+ *
+ * @property $url string URL to make request to
+ * @property $sslVerifyPeer bool Whether to check the peer's SSL certificate
+ * @property $timeout int Wait timeout
+ * @property $method string HTTP request method (POST, GET, etc..)
+ * @property $params array Array of parameters to send in POST string
  */
-
 class Curl
 {
-    /**
-     *  Properties
-     */
-
-    public $url = "";					// URL here
-    public $sslVerifyPeer = false;		// Verify peers
-    public $timeout = 10;				// Timeout in seconds
-    public $method = "POST";			// Or GET
-    public $params = [];				// Parameters to post
+    public $url = '';
+    public $sslVerifyPeer = false;
+    public $timeout = 10;
+    public $method = 'POST';
+    public $params = [];
 
     /**
-     *  Handle container
+     * Handle container
      */
-
-    protected $handle; 
+    protected $handle;
 
     /**
-     *  Execute
-     *  @return string Result
+     * Execute
+     * @return string Result
+     * @throws Exception
      */
-
     public function exec()
     {
 		// Make query
  		$fields = '';
-   		foreach($this->params as $key => $value) { 
+   		foreach ($this->params as $key => $value) {
       		$fields .= $key . '=' . $value . '&'; 
    		}
    		rtrim($fields, '&');
@@ -48,7 +49,7 @@ class Curl
 		curl_setopt($this->handle, CURLOPT_SSL_VERIFYPEER, $this->sslVerifyPeer);
 		curl_setopt($this->handle, CURLOPT_TIMEOUT, $this->timeout);
 		curl_setopt($this->handle, CURLOPT_HEADER, 0);
-		curl_setopt($this->handle, CURLOPT_POST, count($fields));
+		curl_setopt($this->handle, CURLOPT_POST, !empty($fields));
 		curl_setopt($this->handle, CURLOPT_POSTFIELDS, $fields);
 		$result = curl_exec($this->handle);
 
@@ -56,5 +57,4 @@ class Curl
 		curl_close($this->handle);
 		return $result;
 	}
-
 }

@@ -1,20 +1,20 @@
 <?php
-namespace Yepster;
+
+namespace eInvoices;
  
 /**
  * Autoloader
  * Better use the global autoloader of your framework (e.g. Composer)
  * If that doesn't work, include it with require_once /path/to/autoload.php
  *
- * @author  Yellow Melon B.V.
+ * @author  DigiWallet B.V.
  * @license BSD License
- * @version 1.0
  */
 
 function autoload($name)
 {
     // Check if the name starts with Yepster
-    if (\substr_compare($name, "Yepster\\", 0, 8) !== 0) return;
+    if (\substr_compare($name, "eInvoices\\", 0, 8) !== 0) return;
 
     // Take the "Dropbox\" prefix off.
     $stem = \substr($name, 8);
@@ -28,4 +28,4 @@ function autoload($name)
     }
 }
 
-\spl_autoload_register('Yepster\autoload');
+\spl_autoload_register('eInvoices\autoload');
