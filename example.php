@@ -8,7 +8,8 @@
 
 $invoice = eInvoices\CreateInvoice::model()
      ->setApiKey ('6ba19adb0af1c3ec31220072d73080df04b1ef271ac031ca508ef045bccec357')
-     ->addDetail ('name', 'Yellow Melon B.V.')
+     ->addDetail ('companyname', 'Yellow Melon B.V.')
+     ->addDetail ('lastname', 'Pieterstra')
      ->addDetail ('street', 'Kleine koppel')
      ->addDetail ('housenumber', '52')
      ->addDetail ('postcode', '3812PH')
